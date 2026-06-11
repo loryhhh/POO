@@ -1,3 +1,5 @@
+package petshop;
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
@@ -10,12 +12,18 @@ public class TelaPetShop extends JFrame {
 	// ── Campos do formulário ───────────────────────────────
 	private final JTextField campNome = new JTextField(10);
 	private final JTextField campRaca = new JTextField(10);
+	private final JTextField campIdade = new JTextField(10);
+	private final JTextField campDono = new JTextField(10);
+	private final JTextField campTeleDono = new JTextField(10);
 
 	// ── Área de resultado ──────────────────────────────────
 	private final JTextArea areaResultado = new JTextArea(12, 50);
 
 	// ── Botões ─────────────────────────────────────────────
 	private final JButton btnCadastrar = new JButton("Cadastrar");
+	private final JButton btnBuscar = new JButton("Buscar");
+	private final JButton btnAtualizar = new JButton("Atualizar");
+	private final JButton btnRemover = new JButton("Remover");
 
 	// ── Construtor ─────────────────────────────────────────
 	public TelaPetShop() {
@@ -43,8 +51,16 @@ public class TelaPetShop extends JFrame {
 		JPanel painel = new JPanel(new FlowLayout(FlowLayout.LEFT, 8, 6));
 		painel.setBorder(BorderFactory.createTitledBorder("Dados do Pet e Tutor"));
 
-		painel.add(new JLabel("Nome:"));
+		painel.add(new JLabel("Nome: "));
 		painel.add(campNome);
+		painel.add(new JLabel("Raça: "));
+		painel.add(campRaca);
+		painel.add(new JLabel("Idade: "));
+		painel.add(campIdade);
+		painel.add(new JLabel("Dono: "));
+		painel.add(campDono);
+		painel.add(new JLabel("Telefone para contato: "));
+		painel.add(campTeleDono);
 
 		return painel;
 	}
@@ -63,6 +79,9 @@ public class TelaPetShop extends JFrame {
 	private JPanel criarPainelBotoes() {
 		JPanel painel = new JPanel(new FlowLayout(FlowLayout.CENTER, 10, 8));
 		painel.add(btnCadastrar);
+		painel.add(btnBuscar);
+		painel.add(btnAtualizar);
+		painel.add(btnRemover);
 		return painel;
 	}
 
@@ -74,6 +93,9 @@ public class TelaPetShop extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 				String nome = campNome.getText().trim();
 				String raca = campRaca.getText().trim();
+				String idade = campIdade.getText().trim();
+				String dono = campDono.getText().trim();
+				String teleDono = campTeleDono.getText().trim();
 
 				if (nome.isEmpty()) {
 					exibirTexto("ERRO: O campo Nome é obrigatório.");
