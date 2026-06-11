@@ -1,6 +1,6 @@
 package petshop;
 
-public class Petshop {
+public class PetShop {
 	public static void main(String[] args) {
 		Animal[] filaAtendimento = new Animal[2];
 		filaAtendimento[0] = new Cachorro("Rex", 5, "Labrador", true, "João");
