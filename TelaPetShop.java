@@ -25,6 +25,7 @@ public class TelaPetShop extends JFrame {
 	private final JButton btnBuscar = new JButton("Buscar");
 	private final JButton btnAtualizar = new JButton("Atualizar");
 	private final JButton btnRemover = new JButton("Remover");
+	private final JButton btnListar = new JButton("Listar");
 
 	// ── Construtor ─────────────────────────────────────────
 	public TelaPetShop() {
@@ -54,15 +55,15 @@ public class TelaPetShop extends JFrame {
 
 		painel.add(new JLabel("Nome: "));
 		painel.add(campNome);
-		painel.add(new JLabel("Raça: "));
+		painel.add(new JLabel("\nRaça: "));
 		painel.add(campRaca);
-		painel.add(new JLabel("Idade: "));
+		painel.add(new JLabel("\nIdade: "));
 		painel.add(campIdade);
-		painel.add(new JLabel("Faminto: "));
+		painel.add(new JLabel("\nFaminto: "));
 		painel.add(campFaminto);
-		painel.add(new JLabel("Dono: "));
+		painel.add(new JLabel("\nDono: "));
 		painel.add(campDono);
-		painel.add(new JLabel("Telefone para contato: "));
+		painel.add(new JLabel("\nTelefone para contato: "));
 		painel.add(campTelefone);
 
 		return painel;
@@ -85,6 +86,7 @@ public class TelaPetShop extends JFrame {
 		painel.add(btnBuscar);
 		painel.add(btnAtualizar);
 		painel.add(btnRemover);
+		painel.add(btnListar);
 		return painel;
 	}
 
@@ -119,9 +121,45 @@ public class TelaPetShop extends JFrame {
 			}
 		});
 
+		btnBuscar.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				String nome = campNome.getText().trim();
+				Animal a = repositorio.buscarPorNome(nome);
+				if (nome.isEmpty()) {
+					exibirTexto("ERRO: O campo Nome é obrigatório.");
+				}
+				if (nome == null) {
+					exibirTexto("O animal não foi encontrado!");
+
+				}
+				exibirTexto("O animal foi encontrado!\n" + a.exibirDados());
+
+			}
+		});
+
+		btnAtualizar.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+
+			}
+		});
+		btnRemover.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				String nome = campNome.getText().trim();
+				boolean a = repositorio.remover(nome);
+				if (nome.isEmpty()) {
+					exibirTexto("ERRO: O campo Nome é obrigatório.");
+				}
+				exibirTexto("O animal foi encontrado e removido!");
+
+			}
+		});
+		btnListar.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+
+			}
+		});
+
 	}
-	
-	
 
 	// ── Métodos auxiliares ─────────────────────────────────
 
@@ -134,6 +172,10 @@ public class TelaPetShop extends JFrame {
 	private void limparCampos() {
 		campNome.setText("");
 		campRaca.setText("");
+		campIdade.setText("");
+		campDono.setText("");
+		campFaminto.setText("");
+		campTelefone.setText("");
 		campNome.requestFocus();
 	}
 
