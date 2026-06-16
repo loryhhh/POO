@@ -72,11 +72,11 @@ public abstract class Animal {
 
 	public String exibirDados() {
 		return ("Nome: " + nome +
-				"Idade: " + idade +
-				"Faminto: " + faminto +
-				"Dono: " + dono +
-				"Telefone: " + telefone +
-				"Raça: " + getRaca());
+				"\nIdade: " + idade +
+				"\nFaminto: " + faminto +
+				"\nDono: " + dono.getNome() +
+				"\nTelefone: " + dono.getTelefone() +
+				"\nRaça: " + getRaca());
 	}
 
 	protected abstract String getRaca();
