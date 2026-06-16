@@ -1,76 +1,84 @@
 package petshop;
 
-
 public abstract class Animal {
-	protected String nome="";
-	protected String raca="";
+	protected String nome = "";
 	protected int idade = 0;
 	protected boolean faminto;
 	public static int totalDeAnimais = 0;
 	protected Cliente dono = new Cliente();
-	public Animal(String nome, int idade, String raca, boolean faminto, String dono) {
-	    this.nome = nome;
-	    this.idade = idade;
-	    this.raca = raca;
-	    this.faminto = faminto;
-	    this.dono.setNome(dono);
+	protected String telefone = "";
+
+	public Animal(String nome, int idade, boolean faminto, String dono, String telefone) {
+		this.nome = nome;
+		this.idade = idade;
+		this.faminto = faminto;
+		this.dono.setNome(dono);
+		this.dono.setTelefone(telefone);
 	}
 
-	public Animal(String nome, int idade, boolean faminto, String dono) {
-	    this.nome = nome;
-	    this.idade = idade;
-	    this.faminto = faminto;
-	    this.dono.setNome(dono);
+	public Animal() {
+		totalDeAnimais = totalDeAnimais++;
 	}
-	   
-
-
-	public Animal(){
-	    totalDeAnimais = totalDeAnimais ++;
-	}
-
 
 	public String getnome() {
-	    return nome;
+		return nome;
 	}
-	public String getraca() {
-	    return raca;
-	}
+
 	public int getidade() {
-	    return idade;
+		return idade;
 	}
+
 	public boolean isfaminto() {
-	    return faminto;
+		return faminto;
 	}
+
 	public int getTotalDeAnimais() {
-	    return Animal.totalDeAnimais;
+		return Animal.totalDeAnimais;
 	}
 
 	public void setnome(String nome) {
-	    this.nome = nome;
+		this.nome = nome;
 	}
+
 	public void setidade(int idade) {
-	    this.idade = idade;
+		this.idade = idade;
 	}
+
 	public void setfaminto(boolean faminto) {
-	    this.faminto = faminto;
+		this.faminto = faminto;
 	}
-	public void setraca(String raca) {
-	    this.raca = raca; 
-	}
+
 	public int setTotalDeAnimais() {
 		return totalDeAnimais;
 	}
 
+	public abstract void emitirSom();
 
-	    public abstract void emitirSom();
-	    
-	    
-	    public String getdono() {
-	        return dono.getNome();
-	    }
-	    public void setdono(String nome) {
-	        this.dono.setNome(nome);
-	    }
-
+	public String getdono() {
+		return dono.getNome();
 	}
+
+	public void setdono(String nome) {
+		this.dono.setNome(nome);
+	}
+
+	public String gettelefone() {
+		return dono.getTelefone();
+	}
+
+	public void settelefone() {
+		this.dono.setTelefone(telefone);
+	}
+
+	public String exibirDados() {
+		return ("Nome: " + nome +
+				"Idade: " + idade +
+				"Faminto: " + faminto +
+				"Dono: " + dono +
+				"Telefone: " + telefone +
+				"Raça: " + getRaca());
+	}
+
+	protected abstract String getRaca();
+
+}
