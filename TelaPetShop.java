@@ -13,8 +13,9 @@ public class TelaPetShop extends JFrame {
 	private final JTextField campNome = new JTextField(10);
 	private final JTextField campRaca = new JTextField(10);
 	private final JTextField campIdade = new JTextField(10);
+	private final JTextField campFaminto = new JTextField(10);
 	private final JTextField campDono = new JTextField(10);
-	private final JTextField campTeleDono = new JTextField(10);
+	private final JTextField campTelefone = new JTextField(10);
 
 	// ── Área de resultado ──────────────────────────────────
 	private final JTextArea areaResultado = new JTextArea(12, 50);
@@ -57,10 +58,12 @@ public class TelaPetShop extends JFrame {
 		painel.add(campRaca);
 		painel.add(new JLabel("Idade: "));
 		painel.add(campIdade);
+		painel.add(new JLabel("Faminto: "));
+		painel.add(campFaminto);
 		painel.add(new JLabel("Dono: "));
 		painel.add(campDono);
 		painel.add(new JLabel("Telefone para contato: "));
-		painel.add(campTeleDono);
+		painel.add(campTelefone);
 
 		return painel;
 	}
@@ -93,9 +96,10 @@ public class TelaPetShop extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 				String nome = campNome.getText().trim();
 				String raca = campRaca.getText().trim();
-				String idade = campIdade.getText().trim();
+				String idadeStr = campIdade.getText().trim();
+				String famintoStr = campFaminto.getText().trim();
 				String dono = campDono.getText().trim();
-				String teleDono = campTeleDono.getText().trim();
+				String telefone = campTelefone.getText().trim();
 
 				if (nome.isEmpty()) {
 					exibirTexto("ERRO: O campo Nome é obrigatório.");
@@ -104,9 +108,10 @@ public class TelaPetShop extends JFrame {
 				if (raca.isEmpty())
 					raca = "Indefinida";
 
-				int idade = 4;
+				int idade = Integer.parseInt(idadeStr);
+				boolean faminto = Boolean.parseBoolean(famintoStr);
 
-				Cachorro novo = new Cachorro(nome, raca, idade);
+				Cachorro novo = new Cachorro(nome, idade, faminto, dono, telefone, raca);
 
 				repositorio.adicionar(novo);
 				exibirTexto("Pet cadastrado com sucesso!\n\n" + novo.exibirDados());
@@ -115,6 +120,8 @@ public class TelaPetShop extends JFrame {
 		});
 
 	}
+	
+	
 
 	// ── Métodos auxiliares ─────────────────────────────────
 
