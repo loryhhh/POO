@@ -1,7 +1,9 @@
+package petshop;
+
 class Gato extends Animal {
 		private boolean arranhaMoveis;
-		    Gato(String nome, int idade, boolean faminto, String dono, boolean arranhaMoveis) {
-		        super(nome, idade, faminto, dono);
+		    Gato(String nome, int idade, boolean faminto, String dono, String telefone, boolean arranhaMoveis) {
+		        super(nome, idade, faminto, dono, telefone);
 		        this.arranhaMoveis = arranhaMoveis;
 
 		    }
@@ -10,6 +12,10 @@ class Gato extends Animal {
 		    public void emitirSom() {
 		        System.out.println("Miau!");
 		    }
+		    @Override
+			protected String getRaca() {
+				return null;
+			}
 
 		   public boolean isArranhaMoveis() {
 		        return arranhaMoveis;
