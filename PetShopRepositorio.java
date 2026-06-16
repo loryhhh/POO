@@ -11,25 +11,29 @@ public class PetShopRepositorio {
 		animais.add(a);
 	}
 
-	
 	public Animal buscarPorNome(String nome) {
-		System.out.println(animais.contains(nome));
+		for (Animal a : animais) {
+			if (a.nome.equalsIgnoreCase(nome)) {
+				return a;
+			}
+
+		}
 		return null;
 	}
 
-	
 	public boolean remover(String nome) {
-		System.out.println(animais.contains(nome));
-		System.out.println(animais.remove(nome));
-		return true;
+		if (animais.contains(nome)) {
+				animais.remove(nome);
+				return true;
+	
+		}
+		return false;
 	}
 
-	
 	public ArrayList<Animal> listarTodos() {
 		return animais;
 	}
 
-	
 	public int quantidade() {
 		System.out.println(animais.size());
 		return 0;
