@@ -14,10 +14,7 @@ public abstract class Animal {
 		this.faminto = faminto;
 		this.dono.setNome(dono);
 		this.dono.setTelefone(telefone);
-	}
-
-	public Animal() {
-		totalDeAnimais = totalDeAnimais++;
+		totalDeAnimais++;
 	}
 
 	public String getnome() {
@@ -71,14 +68,7 @@ public abstract class Animal {
 	}
 
 	public String exibirDados() {
-		return ("Nome: " + nome +
-				"\nIdade: " + idade +
-				"\nFaminto: " + faminto +
-				"\nDono: " + dono.getNome() +
-				"\nTelefone: " + dono.getTelefone() +
-				"\nRaça: " + getRaca());
+		return ("\nNome: " + nome + "\nIdade: " + idade + "\nFaminto: " + faminto + "\nDono: " + dono.getNome()
+				+ "\nTelefone: " + dono.getTelefone());
 	}
-
-	protected abstract String getRaca();
-
-}
+	}
