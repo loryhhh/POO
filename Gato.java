@@ -11,10 +11,6 @@ class Gato extends Animal {
 		    @Override
 		    public void emitirSom() {
 		        System.out.println("Miau!");
-		    }
-		    @Override
-			protected String getRaca() {
-				return null;
 			}
 
 		   public boolean isArranhaMoveis() {
