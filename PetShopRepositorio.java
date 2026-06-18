@@ -22,10 +22,12 @@ public class PetShopRepositorio {
 	}
 
 	public boolean remover(String nome) {
-		if (animais.contains(nome)) {
-				animais.remove(nome);
+		for (Animal a : animais) {
+			if (a.nome.contains(nome)) {
+				animais.remove(a);
 				return true;
-	
+
+			}
 		}
 		return false;
 	}
