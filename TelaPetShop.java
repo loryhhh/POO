@@ -4,6 +4,7 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
 
 public class TelaPetShop extends JFrame {
 
@@ -25,7 +26,7 @@ public class TelaPetShop extends JFrame {
 	private final JButton btnBuscar = new JButton("Buscar");
 	private final JButton btnAtualizar = new JButton("Atualizar");
 	private final JButton btnRemover = new JButton("Remover");
-	private final JButton btnListar = new JButton("Listar");
+	private final JButton btnListar = new JButton("Listar Todos");
 
 	// ── Construtor ─────────────────────────────────────────
 	public TelaPetShop() {
@@ -128,7 +129,7 @@ public class TelaPetShop extends JFrame {
 				if (nome.isEmpty()) {
 					exibirTexto("ERRO: O campo Nome é obrigatório.");
 				}
-				if (nome == null) {
+				if (a == null) {
 					exibirTexto("O animal não foi encontrado!");
 
 				}
@@ -155,6 +156,13 @@ public class TelaPetShop extends JFrame {
 		});
 		btnListar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				ArrayList<Animal> animais = repositorio.listarTodos();
+				String resultado = "";
+				for (Animal a : animais) {
+					resultado += a.exibirDados();
+					exibirTexto("Lista dos Animais: \n\n" + resultado);
+
+				}
 
 			}
 		});
