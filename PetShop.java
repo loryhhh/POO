@@ -18,7 +18,6 @@ public class PetShop {
 				atendivel.cortarUnhas();
 			}
 			System.out.println("Nome: " + filaAtendimento[i].getnome());
-			System.out.println("Raça: " + filaAtendimento[i].getRaca());
 			System.out.println("Idade: " + filaAtendimento[i].getidade());
 			System.out.println("Faminto: " + filaAtendimento[i].isfaminto());
 			System.out.println("O dono do pet é: " + filaAtendimento[i].getdono());
